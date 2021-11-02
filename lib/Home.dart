@@ -8,8 +8,6 @@ import 'main.dart';
 import 'models/Movies.dart';
 import 'package:file_picker/file_picker.dart';
 import 'dart:io';
-
-
 class Home extends StatefulWidget {
   Home({Key key, this.title}) : super(key: key);
   final String title;
@@ -37,8 +35,6 @@ class _MyHomePageState extends State<Home> {
   var darkBlueColor = Color(0xff486579);
   Movie _movie = Movie();
   List<Movie> _movies = [];
-
-
   DatabaseHelper _dbHelper;
 
   @override
@@ -173,25 +169,16 @@ class _MyHomePageState extends State<Home> {
           );
         });
   }
-  Map<int, String> packages = {
-    0: "/data/com.example.movie/files/VID-20211031-WA0004.mp4",
-      };
+
   pickImageFromGallery() async {
    result = await FilePicker.platform.pickFiles();
    setState(() {
     if(result != null) {
       PlatformFile file = result.files.first;
       // controller = _controllers[0];
-      print(file.name);
-      print(file.bytes);
-      print(file.size);
-      print(file.extension);
-      print(file.path);
       _movie.movi=file.path;
     }
-
    });
-
   }
 
 
@@ -217,19 +204,9 @@ class _MyHomePageState extends State<Home> {
                 } catch (e) {
                   print(e.toString());
                 }
-
-
               VideoPlayerController controller = _controllers[index];
               return Column(
                 children: <Widget>[
-              // TextButton(onPressed: (){
-              //   Navigator.pushAndRemoveUntil(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (BuildContext context) => VideoApp(),
-              //   ),
-              //       (route) => false,
-              // );}, child: Text('viodeo')),
               !_controllers[index].value.isPlaying?Container(
                     height: MediaQuery.of(context).size.height*0.37,
                      width: MediaQuery.of(context).size.width*0.75,
